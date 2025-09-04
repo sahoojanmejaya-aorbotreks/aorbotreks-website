@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Terms and Conditions - Aorbo Treks{% endblock %}
+
+{% block extra_css %}
+<style>
+.terms-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 1rem;
+}
+.terms-container h2, .terms-container h3, .terms-container h4, .terms-container h5 {
+    font-weight: 600;
+}
+.terms-container ul {
+    padding-left: 1.2rem;
+}
+.terms-container li {
+    margin-bottom: 0.5rem;
+}
+.terms-container p {
+    font-size: 12px !important;
+    margin-bottom: 10px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="terms-container pri3">
+    {% if terms %}
+        {{ terms.content|safe }}
+    {% else %}
+        <p>Terms and Conditions content not available.</p>
+    {% endif %}
+</div>
+{% endblock %}

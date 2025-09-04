@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Aorbo Treks</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .contact-details {
+            display: flex;
+            flex-wrap: wrap; /* Allows wrapping to the next row */
+            gap: 20px; /* Space between boxes */
+            padding: 40px;
+            justify-content: flex-start; /* Center the boxes horizontally */
+        }
+        
+        .contact-box {
+            flex: 1 1 calc(50% - 20px); /* Each box takes 50% of the row minus the gap */
+            max-width: calc(50% - 20px); /* Ensure two boxes per row */
+            min-width: 300px; /* Minimum width for readability */
+            padding: 20px;
+            border-radius: 8px;
+            text-align: left;
+            margin-left: 0; /* Added to ensure left alignment */
+        }
+        
+        .contact-box h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .contact-box p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        
+        .contact-box address {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            font-style: normal;
+        }
+        
+        .contact-link {
+            font-size: 14px;
+            color: #007bff; /* Blue color for links */
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .contact-link:hover {
+            text-decoration: underline;
+        }
+        
+        .address-link,
+        .phone-link {
+            display: flex;
+            align-items: center;
+            gap: 1px;
+        }
+        
+        .icon {
+            width: 30px;
+            height:30px;
+        }
+        .msg-icon {
+            width: 20px;
+            height:20px;
+            margin-right: 7px;
+        }
+        
+        .chat-btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .chat-btn:hover {
+            background-color: #0056b3;
+        }
+        
+        .arrow {
+            font-size: 16px;
+        }
+        
+        .support-text {
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .contact-box {
+                flex: 1 1 100%; /* Stack boxes vertically on smaller screens */
+                max-width: 100%;
+            }
+        }
+      
+       
+        
+        .contact-group {
+            display: flex;
+            gap: 20px;
+        }
+        
+    
+        hr {
+            border: 0;
+            border-top: 2px solid #ddd;
+            width: 100%;
+            margin: 20px auto;
+            height: 0px;
+        }
+      
+       
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <img src="Aorbo mobile prototype(1)-Photoroom 7.png" alt="Aorbo Treks Logo" class="nav-logo">
+                <div class="nav-center">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About us</a>
+                    <a href="blogs.html">Blogs</a>
+                    <a href="safety.html">Safety</a>
+                    <a href="contact.html" class="active">Contact us</a>
+                </div>
+                <button class="download-btn">
+                    <span>Coming Soon..</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="contact-page">
+        <div class="contact-container">
+            <div class="contact-form-section">
+                <h2>Get answers to your Questions</h2>
+                <br>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile">Mobile Number</label>
+                        <input type="tel" id="mobile" name="mobile" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="userType">User Type</label>
+                        <select id="userType" name="userType" required>
+                            <option value="">Select user type</option>
+                            <option value="trekker">General</option>
+                            <option value="organizer">Trek Organizer</option>
+                            <option value="other">Trek Operator</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment">Comment</label>
+                        <textarea id="comment" name="comment" required></textarea>
+                    </div><center>
+                    <button type="submit" class="submit-btn">Submit</button></center>
+                </form>
+                <script src="js/contact.js"></script>
+            </div>
+            <div class="contact-info-section">
+                <img src="contact service.jpg" alt="Customer Support" class="support-image">
+            </div>
+        </div>
+        <div class="contact-details">
+            <!-- Group 1: Grievances and Ombudsman -->
+            <div class="contact-group">
+                <div class="contact-box">
+                    <h3>Grievances</h3>
+                    <p>Connect with us for complaint resolution—we prioritize your concerns.</p>
+                    <a href="mailto:Aorbotreks@gmail.com?subject=Issue Regarding the AorboTreks App" class="contact-link address-link"><img src="image.png" alt="MESSAGE Icon" class="msg-icon">Send a message</a>
+                   
+                </div>
+                <div class="contact-box">
+                    <h3>Ombudsman</h3>
+                    <p>Reach out to our regulatory authority via message for complaint escalation.</p>
+                    <a href="#" class="contact-link">Know More</a>
+                </div>
+            </div>
+        
+            <hr class="separator-line">
+        
+            <!-- Group 2: Registered Address and Customer Support -->
+            <div class="contact-group">
+                <div class="contact-box">
+                    <h3>Registered Address</h3>
+                    <address>
+                        AORBO INFOCOM<br>
+                        Flat No. 205, 2nd floor Balakrishna Apartment<br>
+                        Sri Krup Market<br>
+                        Malakpet, Hyderabad, India, 500036<br>
+                        CIN: U67190KA2012PTC176031
+                    </address>
+                    <a href="https://maps.app.goo.gl/ZgXJtZU7XJ9BXkaZ9" class="contact-link address-link">
+                        <img src="image-1.png" alt="Map Icon" class="icon1"> View in Maps
+                    </a>
+                </div>
+                <div class="contact-box">
+                    <h3>Customer Support</h3>
+                    <p>Tap on your Aorbo Treks app Help screen and select a topic for quick assistance.</p>
+                    <p>OR tap below.</p>
+                    <a href ="https://wa.me/9398093503"><button class="chat-btn">Get Help <span class="arrow">→</span></button></a>
+                    <p class="support-text">To reach us by phone, tap below</p>
+                    <a href="tel:+919398093503" class="contact-link phone-link">
+                        <img src="image-2.png" alt="Phone Icon" class="icon1"> Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <img src="Aorbo mobile prototype(1)-Photoroom 7.png" alt="Aorbo Treks">
+                    <h3>Aorbo Treks</h3>
+                </div>
+                <p>Aorbo Treks helps travellers find and book treks easily by connecting them with trusted trek organizers. Whether you're going solo or with a group, we make trekking simple and hassle-free. 🗺️💕</p>
+                <div class="app-buttons">
+                    <a href="#" class="play-store">
+                        <img src="Vector.png" alt="Get it on Google Play">
+                    </a>
+                    <a href="#" class="app-store">
+                        <img src="Vector-1.png" alt="Download on App Store">
+                    </a>
+                </div>
+            </div>
+            <div class="footer-right">
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>About Aorbo</h4>
+                        <ul>
+                            <li><a href="about.html">About us</a></li>
+                            <li><a href="#">Our Values</a></li>
+                            <li><a href="contact.html">Contact us</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Information</h4>
+                        <ul>
+                            <li><a href="#">T&C</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="blogs.html">Blogs</a></li>
+                            <li><a href="index.html">FAQ</a></li>
+                            <li><a href="#">User Agreement</a></li>
+                            <li><a href="#">Insurance Partner</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Follow our socials</h4>
+                        <div class="social-icons">
+                            <a href="https://www.instagram.com/aorbo_treks_official?igsh=MWFlYXo4eGUzeDRoeQ=="><img src="instagram.png" alt="Instagram"></a>
+                            <a href="https://www.quora.com/profile/Aorbo-Treks?ch=3&oid=2916133467&share=ad038b63&srid=uPcJFO&target_type=user"><img src="Quora.png" alt="Quora"></a>
+                            <a href="https://www.facebook.com/share/1EdiBukgY4/"><img src="facebook.png" alt="Facebook"></a>
+                            <a href="https://x.com/Aorbo_treks?t=PeDDeVp4OHZ6qvESNbsWbg&s=08"><img src="X.png" alt="x"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 - All rights reserved</p>
+        </div>
+    </footer>
+</body>
+</html>

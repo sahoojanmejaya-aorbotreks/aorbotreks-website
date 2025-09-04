@@ -1,0 +1,292 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ blog.title }} - Aorbo Treks{% endblock %}
+
+{% block extra_css %}
+<style>
+    .blog-detail-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 6rem 5% 4rem;
+    }
+
+    .blog-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+    }
+
+    .blog-meta {
+        display: flex;
+        align-items: center;
+        margin-bottom: 2rem;
+        gap: 1rem;
+    }
+
+    .blog-author {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    .blog-date {
+        font-size: 0.9rem;
+        color: #666;
+    }
+
+    /* Featured image floats left so first paragraph wraps */
+    .blog-featured-image {
+        width: 50%;
+        height: 300px;
+        max-height: 400px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin: 0 1.5rem 1rem 0;
+        float: left;
+    }
+
+    /* Content base styles */
+    .blog-content {
+        font-size: 14px;
+        line-height: 1.8;
+        color: #333;
+        position: relative;
+        /* for gradient fade */
+        transition: max-height 0.3s ease;
+    }
+
+    .blog-content h1 {
+        font-size: 22px !important;
+        font-weight: 700;
+        /* optional, if you want to keep bold */
+        /* margin: 1.5rem 0 0.75rem; */
+    }
+
+
+    /* Only the first paragraph is allowed to sit beside the float.
+       Everything else clears and starts below the image. */
+    .blog-content>* {
+        clear: both;
+    }
+
+    .blog-content>p:first-of-type {
+        clear: none;
+    }
+
+
+    /* Collapsed state: approx 3 lines (line-height:1.8 -> 3*1.8em) */
+    .blog-content.collapsed {
+        max-height: calc(1.8em * 3);
+        overflow: hidden;
+        padding-bottom: 280px;
+        /* space before gradient */
+    }
+
+    /* Subtle gradient fade at the bottom when collapsed */
+    .blog-content.collapsed::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 3rem;
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff);
+        pointer-events: none;
+    }
+
+    /* Expanded shows full content */
+    .blog-content.expanded {
+        max-height: none;
+        overflow: visible;
+    }
+
+    .blog-content h2 {
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin: 1.5rem 0 0.75rem;
+    }
+
+    .blog-content h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 1rem 0 0.5rem;
+    }
+
+    .blog-content p {
+        margin: 0 0 1rem 0;
+    }
+
+    .blog-content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 1.5rem 0;
+    }
+
+    .blog-content ul,
+    .blog-content ol {
+        margin: 0 0 1.2rem 1.5rem;
+    }
+
+    .view-toggle {
+        display: inline-block;
+        margin-top: 1px;
+        font-size: 12px;
+        font-weight: 600;
+        color: #007bff;
+        cursor: pointer;
+        user-select: none;
+    }
+
+    /* Recent posts */
+    .recent-posts {
+        margin-top: 4rem;
+        padding-top: 2rem;
+        border-top: 1px solid #eee;
+    }
+
+    .recent-posts h2 {
+        font-size: 1.6rem;
+        font-weight: 600;
+        margin-bottom: 1.2rem;
+    }
+
+    .recent-posts-scroll {
+        display: flex;
+        gap: 1rem;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 1rem;
+    }
+
+    .recent-post-card {
+        background: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        min-width: 260px;
+        max-width: 300px;
+        scroll-snap-align: start;
+        flex-shrink: 0;
+        transition: transform 0.2s ease;
+    }
+
+    .recent-post-card:hover {
+        transform: translateY(-4px);
+    }
+
+    .recent-post-image {
+        width: 100%;
+        height: 150px;
+        overflow: hidden;
+    }
+
+    .recent-post-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .recent-post-content {
+        padding: 1rem;
+    }
+
+    .recent-post-title {
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 0 0 0.4rem;
+        line-height: 1.4;
+    }
+
+    .recent-post-date {
+        font-size: 0.8rem;
+        color: #666;
+    }
+
+    @media (max-width: 768px) {
+        .blog-title {
+            font-size: 2rem;
+        }
+
+        .blog-featured-image {
+            float: none;
+            width: 100%;
+            margin: 0 0 1rem 0;
+            max-height: 60vh;
+        }
+
+        /* On mobile, everything naturally stacks; clears are harmless */
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<main class="blog-detail-container container">
+    <div class="row">
+        <div class="col-lg-12">
+            <article class="blog-article">
+                <header class="blog-header mb-4">
+                    <h1 class="blog-title">{{ blog.title }}</h1>
+                    <div class="blog-meta">
+                        <div class="blog-author">By {{ blog.author }}</div>
+                        <div class="blog-date">{{ blog.created_at|date:"F d, Y" }}</div>
+                    </div>
+                </header>
+
+                {% if blog.image_url %}
+                <img src="{{ blog.image_url }}" alt="{{ blog.title }}" class="blog-featured-image">
+                {% else %}
+                <img src="{% static 'images/R-logo.webp' %}" alt="Aorbo Logo" class="blog-featured-image">
+                {% endif %}
+
+                <!-- Start collapsed; JS toggles to expanded -->
+                <div class="blog-content collapsed" id="blogContent">
+                    {{ blog.content|safe }}
+                </div>
+                <span class="view-toggle" id="viewToggle">View More</span>
+            </article>
+        </div>
+    </div>
+
+    {% if recent_blogs %}
+    <section class="recent-posts">
+        <h2 class="text-center mb-4">Recent Posts</h2>
+        <div class="recent-posts-scroll">
+            {% for recent_blog in recent_blogs %}
+            <a href="{% url 'blog_detail' recent_blog.slug %}" class="recent-post-card">
+                <div class="recent-post-image">
+                    <img src="{{ recent_blog.image_url }}" alt="{{ recent_blog.title }}">
+                </div>
+                <div class="recent-post-content">
+                    <h3 class="recent-post-title">{{ recent_blog.title }}</h3>
+                    <div class="recent-post-date">{{ recent_blog.created_at|date:"F d, Y" }}</div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+</main>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const content = document.getElementById("blogContent");
+        const toggle = document.getElementById("viewToggle");
+
+        // Ensure proper initial state
+        content.classList.remove("expanded");
+        content.classList.add("collapsed");
+        toggle.textContent = "View More";
+
+        toggle.addEventListener("click", function () {
+            const isExpanded = content.classList.toggle("expanded");
+            content.classList.toggle("collapsed", !isExpanded);
+            toggle.textContent = isExpanded ? "View Less" : "View More";
+        });
+    });
+</script>
+{% endblock %}

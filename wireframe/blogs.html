@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs - Aorbo Treks</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Blog specific styles */
+        .blogs-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 6rem 5% 2rem;
+        }
+        
+        .blogs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+            padding: 0 1rem;
+        }
+        
+        .blog-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .blog-image {
+            width: 100%;
+            height: 180px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .blog-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            background: white;
+        }
+        
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+        
+        .blog-logo {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+        }
+        
+        .blog-date {
+            font-size: 0.75rem;
+            color: var(--gray-text);
+        }
+        
+        .blog-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+        
+        .blog-excerpt {
+            font-size: 0.875rem;
+            color: var(--gray-text);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .blog-card.red {
+            background: #ffd2ec;
+        }
+        
+        .blog-card.purple {
+            background: #F8E6FF;
+        }
+
+        .blog-card.blue {
+            background: #E6F4FF;
+        }
+
+        .blog-card.green {
+            background: #E6FFE8;
+        }
+        .blog-card.yellow {
+            background: #fff5d2;
+        }
+        @media (max-width: 1024px) {
+            .blogs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .blogs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <img src="Aorbo mobile prototype(1)-Photoroom 7.png" alt="Aorbo" class="nav-logo">
+            <div class="nav-center">
+                <a href="index.html">Home</a>
+                <a href="about.html">About us</a>
+                <a href="blogs.html" class="active">Blogs</a>
+                <a href="safety.html">Safety</a>
+                <a href="contact.html">Contact us</a>
+            </div>
+            <button class="download-btn">Coming Soon..</button>
+        </div>
+    </nav>
+
+    <main class="blogs-container">
+        <div class="blogs-header">
+            <h1>Blogs</h1>
+        </div>
+
+        <div class="blogs-grid">
+            <!-- Blog Card 1 -->
+            <div class="blog-card red">
+                <div class="blog-image"><a href="https://aorbotreks.blogspot.com/2025/01/who-we-are.html">
+                    <img src="blog1.png" alt="Adventure Redefined"></a>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <img src="logo.jpg" alt="Aorbo" class="blog-logo">
+                        <div class="blog-date">December 15, 2024</div>
+                    </div>
+                    <h2 class="blog-title"><a href="https://aorbotreks.blogspot.com/2025/01/who-we-are.html"style="text-decoration:none;color:inherit;">Adventure Redefined: The Aorbo Treks Story</a></h2>
+                    <p class="blog-excerpt">Join us on a journey through the evolution of trekking as we explore how Aorbo Treks is transforming the adventure landscape.</p>
+                </div>
+            </div>
+
+            <!-- Blog Card 2 -->
+            <div class="blog-card blue">
+                <div class="blog-image">
+                    <a href="https://aorbotreks.blogspot.com/2025/01/mountains-teach-what-screens-cant.html">
+                    <img src="blog2.png" alt="Mountain Treks"></a>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <img src="logo.jpg" alt="Aorbo" class="blog-logo">
+                        <div class="blog-date">December 10, 2024</div>
+                    </div>
+                  
+                        <h2 class="blog-title">  <a href="https://aorbotreks.blogspot.com/2025/01/mountains-teach-what-screens-cant.html"style="text-decoration:none;color:inherit;">Mountain Treks: What Seniors Can't</a></h2>
+                    <p class="blog-excerpt">Discover how age is just a number when it comes to mountain trekking. Tips and insights for senior adventurers.</p>
+                </div>
+            </div>
+
+            <!-- Blog Card 3 -->
+            <div class="blog-card yellow">
+                <div class="blog-image">
+                    <a href="https://aorbotreks.blogspot.com/2025/01/why-trekking-is-best-worst-decision.html">
+                    <img src="blog3.png" alt="Why Trekking"></a>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <img src="logo.jpg" alt="Aorbo" class="blog-logo">
+                        <div class="blog-date">December 5, 2024</div>
+                    </div>
+                    <h2 class="blog-title"><a href="https://aorbotreks.blogspot.com/2025/01/why-trekking-is-best-worst-decision.html"style="text-decoration:none;color:inherit;">Why Trekking is the Best Decision You'll Ever Make!</a></h2>
+                    <p class="blog-excerpt">Explore the transformative power of trekking and how it can change your perspective on life.</p>
+                </div>
+            </div>
+
+            <!-- Blog Card 4 -->
+            <div class="blog-card purple">
+                <div class="blog-image"><a href="https://aorbotreks.blogspot.com/2025/02/the-ultimate-guide-to-trekking-because.html">
+                    <img src="blog4.png" alt="Ultimate Guide"></a>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <img src="logo.jpg" alt="Aorbo" class="blog-logo">
+                        <div class="blog-date">November 30, 2024</div>
+                    </div>
+                    <h2 class="blog-title"><a href="https://aorbotreks.blogspot.com/2025/02/the-ultimate-guide-to-trekking-because.html"style="text-decoration:none;color:inherit;">The Ultimate Guide to Trekking - Because Walking on a Treadmill is Too Mainstream</a></h2>
+                    <p class="blog-excerpt">A comprehensive guide to help you transition from indoor walking to outdoor trekking adventures.</p>
+                </div>
+            </div>
+
+            <!-- Blog Card 5 -->
+            <div class="blog-card green">
+                <div class="blog-image"><a href="hhttps://aorbotreks.blogspot.com/2025/02/escape-concrete-jungle-aorbo-treks-is.html">
+                    <img src="blog5.png" alt="Explore"></a>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <img src="logo.jpg" alt="Aorbo" class="blog-logo">
+                        <div class="blog-date">November 25, 2024</div>
+                    </div>
+                    <h2 class="blog-title"><a href="https://aorbotreks.blogspot.com/2025/02/escape-concrete-jungle-aorbo-treks-is.html"style="text-decoration:none;color:inherit;">Explore the Concrete Jungle - Aorbo Trek is Your Ticket to Adventure!</a></h2>
+                    <p class="blog-excerpt">Urban trekking adventures that prove you don't need to leave the city to find excitement.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <img src="Aorbo mobile prototype(1)-Photoroom 7.png" alt="Aorbo Treks">
+                    <h3>Aorbo Treks</h3>
+                </div>
+                <p>Aorbo Treks helps travellers find and book treks easily by connecting them with trusted trek organizers. Whether you're going solo or with a group, we make trekking simple and hassle-free. 🗺️💕</p>
+                <div class="app-buttons">
+                    <a href="#" class="play-store">
+                        <img src="Vector.png" alt="Get it on Google Play">
+                    </a>
+                    <a href="#" class="app-store">
+                        <img src="Vector-1.png" alt="Download on App Store">
+                    </a>
+                </div>
+            </div>
+            <div class="footer-right">
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>About Aorbo</h4>
+                        <ul>
+                            <li><a href="about.html">About us</a></li>
+                            <li><a href="#">Our Values</a></li>
+                            <li><a href="contact.html">Contact us</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Information</h4>
+                        <ul>
+                            <li><a href="#">T&C</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="blogs.html">Blogs</a></li>
+                            <li><a href="index.html">FAQ</a></li>
+                            <li><a href="#">User Agreement</a></li>
+                            <li><a href="#">Insurance Partner</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Follow our socials</h4>
+                        <div class="social-icons">
+                            <a href="https://www.instagram.com/aorbo_treks_official?igsh=MWFlYXo4eGUzeDRoeQ=="><img src="instagram.png" alt="Instagram"></a>
+                            <a href="https://www.quora.com/profile/Aorbo-Treks?ch=3&oid=2916133467&share=ad038b63&srid=uPcJFO&target_type=user"><img src="Quora.png" alt="Quora"></a>
+                            <a href="https://www.facebook.com/share/1EdiBukgY4/"><img src="facebook.png" alt="Facebook"></a>
+                            <a href="https://x.com/Aorbo_treks?t=PeDDeVp4OHZ6qvESNbsWbg&s=08"><img src="X.png" alt="x"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 - All rights reserved</p>
+        </div>
+    </footer>
+</body>
+</html>

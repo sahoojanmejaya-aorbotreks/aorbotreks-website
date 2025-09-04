@@ -1,0 +1,187 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Safety - Aorbo Treks{% endblock %}
+
+{% block content %}
+
+<style>
+    @import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css');
+</style>
+<div class="container safety-page py-5">
+    <div class="safety-container">
+        <h1 class="text-center mb-5">Safety</h1>
+
+        <section class="safety-hero row align-items-center mb-5">
+            <div class="safety-content col-md-6">
+                <h2>Explore the Wild with Confidence</h2>
+                <p>At Aorbo Treks, the safety of our users is our top priority. We ensure a secure and structured
+                    trekking experience by partnering with Verified Organizers - you are in safe hands!</p>
+            </div>
+            <div class="safety-image col-md-6">
+                <img src="{% static 'images/Aorbo safety.webp' %}" alt="Safe Trekking Experience"
+                    class="img-fluid rounded">
+            </div>
+        </section>
+
+        <section class="safety-features row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4 mb-5">
+            {% if safety_tips %}
+            {% for tip in safety_tips %}
+            <div class="col">
+                <div class="feature-item p-4 bg-light rounded shadow-sm h-100">
+                    <h3 class="text-primary">{{ tip.title }}</h3>
+                    <p>{{ tip.description }}</p>
+                    {% if tip.icon %}
+                    <div class="text-center mt-3">
+                        <img src="{{ tip.icon.url }}" alt="{{ tip.title }}" class="safety-tip-icon">
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="col">
+                <div class="feature-item p-4 bg-light rounded shadow-sm h-100">
+                    <h3 class="text-primary">Female-Friendly Treks</h3>
+                    <p>Offering women-specific treks with experienced female guides who bring a supportive and inclusive
+                        atmosphere.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="feature-item p-4 bg-light rounded shadow-sm h-100">
+                    <h3 class="text-primary">24/7 Support</h3>
+                    <p>We have a dedicated team that is available around the clock to assist with any emergencies or
+                        help you need.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="feature-item p-4 bg-light rounded shadow-sm h-100">
+                    <h3 class="text-primary">Emergency Preparedness</h3>
+                    <p>All treks are equipped with an emergency kit, have clear protocols in place, and medical support
+                        if needed.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="feature-item p-4 bg-light rounded shadow-sm h-100">
+                    <h3 class="text-primary">Safety Drills</h3>
+                    <p>Our trek guides are skilled in handling all types of situations and conduct regular training
+                        drills for all trek team members.</p>
+                </div>
+            </div>
+            {% endif %}
+        </section>
+
+        <section class="individual-safety mb-5">
+            <h2 class="text-center mb-4">Individual Trekker..?</h2>
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <img src="{% static 'images/Assurance.webp' %}" alt="Individual Safety" class="img-fluid rounded">
+                </div>
+                <div class="col-md-6">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <h3>Solo Experience</h3>
+                            <p>An individual trekker often plans their trek independently, relying on their own research
+                                to find treks and organizers.</p>
+                        </div>
+                        <div class="col-12">
+                            <h3>Limited Access</h3>
+                            <p>They may not have access to a wide variety of trekking options or specialized services
+                                without extensive research.</p>
+                        </div>
+                        <div class="col-12">
+                            <h3>Greater Uncertainty</h3>
+                            <p>Solo trekkers may feel uncertain about the reliability of organizers and safety, as
+                                they're usually working with unverified sources.</p>
+                        </div>
+                        <div class="col-12">
+                            <h3>Higher Costs</h3>
+                            <p>Solo trekkers might face higher costs since they aren't benefiting from group discounts
+                                or tailored packages that offer better value.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="platform-safety mb-5">
+            <h2 class="text-center mb-4">Our on Aorbo Treks Platform</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <h3>Access to Multiple Organizers</h3>
+                            <p>Users can browse trusted trekking organizers on Aorbo, making it easy to compare options.
+                            </p>
+                        </div>
+                        <div class="col-12">
+                            <h3>Tailored Trek Options</h3>
+                            <p>Users can filter treks by preferences, ensuring a personalized experience.</p>
+                        </div>
+                        <div class="col-12">
+                            <h3>Safety and Assurance</h3>
+                            <p>Aorbo ensures partner organizers follow safety standards, providing reliable services for
+                                peace of mind.</p>
+                        </div>
+                        <div class="col-12">
+                            <h3>Cost-Effective Packages</h3>
+                            <p>Aorbo offers group discounts, special deals, and customizable packages to help users
+                                save.</p>
+                        </div>
+                        <div class="col-12">
+                            <h3>24/7 Support</h3>
+                            <p>Users have direct access to customer support, ensuring a secure and stress-free
+                                experience.</p>
+                        </div>
+                        <div class="col-12">
+                            <h3>Streamlined Booking Process</h3>
+                            <p>With Aorbo, users can easily book, pay, and manage their trips in one place.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <img src="{% static 'images/Aorbo connects you with certified trekking partners, taking care of safety, serving evoking unforgettable experiences. Book your next trek safely with Aorbo, where safety meets excitement..webp' %}"
+                        alt="Platform Safety" class="img-fluid rounded">
+                </div>
+            </div>
+        </section>
+
+        <section class="group-safety">
+            <h2 class="text-center mb-4">At Aorbo Treks, we make group bookings easy, affordable, and hassle-free</h2>
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <img src="{% static 'images/money 1.webp' %}" alt="Safe Group Payments" class="img-fluid rounded">
+                </div>
+                <div class="col-md-6">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <h3>Simple Booking</h3>
+                            <p>Group leaders can book for the entire group online with customizable trek options.</p>
+                        </div>
+                        <div class="col-12">
+                            <h3>Exclusive Discounts</h3>
+                            <p>Get special pricing and flexible payment options for groups.</p>
+                        </div>
+                        <div class="col-12">
+                            <h3>Dedicated Support</h3>
+                            <p>Enjoy personalized assistance and 24/7 customer support for a smooth experience.</p>
+                        </div>
+                        <div class="col-12">
+                            <h3>Safety & Logistics</h3>
+                            <p>We manage safety, transport, and accommodation for your group's comfort.</p>
+                        </div>
+                        <div class="col-12">
+                            <h3>Team Building</h3>
+                            <p>Engage in activities that promote bonding and collaboration.</p>
+                        </div>
+                        <div class="col-12">
+                            <h3>Seamless Communication</h3>
+                            <p>Keep everyone informed with clear details and updates.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}
