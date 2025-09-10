@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Aorbo Treks – Explore India’s Best Trekking Spots</title>
+  <meta name="description"
+    content="Join Aorbo Treks for unforgettable trekking adventures across India. Safe, sustainable, and memorable experiences.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="/static/css/noncritical.css" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="/static/css/noncritical.css">
+  </noscript>
+
+  <link rel="canonical" href="https://aorbotreks.com/current-page-url" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Aorbo Treks – Explore India’s Best Trekking Spots">
+  <meta property="og:description"
+    content="Discover trekking adventures with Aorbo Treks. Safe. Sustainable. Unforgettable.">
+  <meta property="og:image" content="/assets/images/hero-sec.webp">
+  <meta property="og:url" content="https://aorbotreks.com/current-page-url">
+  <meta property="og:type" content="website">
+
+  <meta http-equiv="Content-Security-Policy"
+    content="img-src 'self' data: https://aorbotreks.com https://www.aorbotreks.com https://xsconhhzyaiowokwsqne.supabase.co;">
+
+  <title>{% block title %}Aorbo Treks{% endblock %}</title>
+  {% load static %}
+  <link rel="icon" href="{% static 'images/logo.png' %}">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrapicons@1.10.5/font/bootstrap-icons.css">
+  <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <link rel="stylesheet" href="{% static 'css/carousel-hover.css' %}">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <link rel="preload" href="/static/fonts/Poppins-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/static/css/noncritical.css" media="print" onload="this.media='all'">
+
+  <!-- Bootstrap Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+
+  <!-- Custom JS -->
+  <script src="{% static 'js/main.js' %}" defer></script>
+
+
+  {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+  <!-- Navbar -->
+
+  <!-- ... your navbar code ... -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home' %}">
+        <img src="{% static 'images/updated_logo.webp' %}" alt="Aorbo" class="nav-logo" height="50">
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+        <ul class="navbar-nav mx-auto align-items-lg-center text-center">
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == '/about/' %}active{% endif %}" href="{% url 'about' %}">About
+              us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == '/blogs/' %}active{% endif %}" href="{% url 'blogs' %}">Blogs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == '/safety/' %}active{% endif %}"
+              href="{% url 'safety' %}">Safety</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == '/contact/' %}active{% endif %}" href="{% url 'contact' %}">Contact
+              us</a>
+          </li>
+        </ul>
+
+        <!-- Desktop Button -->
+        <div class="d-none d-lg-block">
+          <button class="btn download-btn">Coming Soon..</button>
+        </div>
+
+        <!-- Mobile Button -->
+        <div class="d-lg-none text-center mt-3 w-100">
+          <button class="btn download-btn w-75 mx-auto">Coming Soon..</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+  {% block content %}{% endblock %}
+
+  <!-- Footer -->
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-left">
+        <div class="footer-logo">
+          <img src="{% static 'images/updated_logo.webp' %}" alt="Aorbo Treks">
+          <h3>Aorbo Treks</h3>
+        </div>
+        <p>Aorbo Treks helps travellers find and book treks easily by connecting them with trusted trek organizers.
+          Whether you're going solo or with a group, we make trekking simple and hassle-free. 🗺💕</p>
+        <div class="app-buttons">
+          <a href="#" class="play-store">
+            <img src="{% static 'images/Vector.webp' %}" alt="Get it on Google Play">
+          </a>
+          <a href="#" class="app-store">
+            <img src="{% static 'images/Vector-1.webp' %}" alt="Download on App Store">
+          </a>
+        </div>
+      </div>
+      <div class="footer-right">
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>About Aorbo</h4>
+            <ul>
+              <li><a href="{% url 'about' %}">About us</a></li>
+              <!-- <li><a href="#">Our Values</a></li> -->
+              <li><a href="{% url 'contact' %}">Contact us</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Information</h4>
+            <ul>
+              <li><a href="{% url 'terms_and_conditions' %}">T&C</a></li>
+              <li><a href="{% url 'privacy_policy' %}">Privacy Policy</a></li>
+              <li><a href="{% url 'blogs' %}">Blogs</a></li>
+              <!-- <li><a href="{% url 'home' %}">FAQ</a></li> -->
+              <li><a href="{% url 'user_agreement' %}">User Agreement</a></li>
+              <li><a href="#">Insurance Partner</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Follow our socials</h4>
+            <div class="social-icons">
+              <a href="https://www.instagram.com/aorbo_treks_official?igsh=MWFlYXo4eGUzeDRoeQ=="><img
+                  src="{% static 'images/Instagram.webp' %}" alt="Instagram"></a>
+              <a
+                href="https://www.quora.com/profile/Aorbo-Treks?ch=3&oid=2916133467&share=ad038b63&srid=uPcJFO&target_type=user"><img
+                  src="{% static 'images/Quora.webp' %}" alt="Quora"></a>
+              <a href="https://www.facebook.com/share/1EdiBukgY4/"><img src="{% static 'images/Facebook.webp' %}"
+                  alt="Facebook"></a>
+              <a href="https://x.com/Aorbo_treks?t=PeDDeVp4OHZ6qvESNbsWbg&s=08"><img src="{% static 'images/X.webp' %}"
+                  alt="x"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 - All rights reserved</p>
+    </div>
+  </footer>
+  <!-- ... your footer code ... -->
+
+
+  <!-- ✅ Cookie Popup -->
+  <div id="cookie-banner" class="cookie-banner d-none">
+    <div class="cookie-text">
+      🍪 We use cookies to personalize your experience.
+      <a href="{% url 'privacy_policy' %}" class="text-decoration-underline text-light">Learn more</a>
+    </div>
+    <div class="cookie-buttons mt-2 text-end">
+      <button id="decline-cookies" class="btn btn-outline-light btn-sm me-2">Decline</button>
+      <button id="accept-cookies" class="btn btn-success btn-sm">Accept</button>
+    </div>
+  </div>
+
+  {% block extra_js %}{% endblock %}
+</body>
+
+</html>

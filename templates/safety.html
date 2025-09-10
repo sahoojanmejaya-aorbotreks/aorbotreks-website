@@ -1,0 +1,375 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Safety - Aorbo Treks{% endblock %}
+
+{% block content %}
+
+<style>
+    :root {
+        --main-bg: #f8f9fa;
+        --card-gap: 1rem;
+        --card-width: 220px;
+    }
+
+    body {
+        background-color: var(--main-bg);
+    }
+
+    main.safety-page {
+        background-color: var(--main-bg);
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+
+    .safety-page {
+        padding-top: 0px !important;
+        padding-bottom: 60px;
+    }
+
+    .safety-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    h1 {
+        font-size: 2.25rem;
+        margin-bottom: 1.5rem;
+        text-align: left;
+    }
+
+    h2.section-title {
+        font-size: 1.25rem;
+        margin: 2rem 0 1rem;
+        text-align: left;
+    }
+
+    .safety-hero {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 2.5rem;
+        gap: 1.5rem;
+    }
+
+    .safety-content {
+        flex: 1;
+        text-align: left;
+    }
+
+    .safety-content h2 {
+        font-size: 1.25rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .safety-content p {
+        font-size: 18px !important;
+        line-height: 1.4;
+        color: #555;
+        text-align: left;
+        margin-bottom: 0.5rem;
+    }
+
+    .feature-item p,
+    .safety-item p,
+    .platform-item p,
+    .group-item p {
+        margin-top:15px;        
+        font-size: 14px;
+        line-height: 1.4;
+        color: #555;
+        text-align: left;
+        margin-bottom: 0.5rem;
+    }
+
+    .safety-image {
+        flex: 1;
+        text-align: left;
+    }
+
+    .safety-image img {
+        width: 100%;
+        border-radius: 10px;
+        display: block;
+        margin-left: 0;
+    }
+
+    .scrollable-row {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        overflow-x: auto;
+        gap: var(--card-gap);
+        padding: 1rem 0 1.5rem 0;
+        scroll-snap-type: x mandatory;
+        margin-left: 0;
+    }
+
+    .scrollable-row>div {
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+        text-align: left;
+        width: var(--card-width);
+    }
+
+    .feature-item,
+    .safety-item,
+    .platform-item,
+    .group-item {
+        background-color: #fff;
+        padding: 0.75rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+        text-align: left;
+        width: var(--card-width);
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        min-height: 225px;
+    }
+
+    .feature-item:hover,
+    .safety-item:hover,
+    .platform-item:hover,
+    .group-item:hover {
+        transform: translateY(-4px);
+    }
+
+    .feature-item h3,
+    .safety-item h3,
+    .platform-item h3,
+    .group-item h3 {
+            margin-top: 10px;
+        margin-bottom: 0.5rem;
+        color: #3063a9;
+        font-size: 21px !important;
+        text-align: center;
+    }
+
+    .safety-tip-icon {
+        width: 30px;
+        height: 30px;
+        object-fit: contain;
+        display: block;
+        margin-top: auto;
+    }
+
+    .safety-card-image img,
+    .platform-image img,
+    .group-image img {
+        width: 100%;
+        border-radius: 10px;
+        display: block;
+        margin-left: 0;
+        text-align: left;
+    }
+
+    .group-image {
+        text-align: left;
+        margin-left: 0 !important;
+        padding-left: 0 !important;
+    }
+
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 1.75rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+        }
+
+        h4 {
+            font-size: 1.125rem;
+        }
+
+        h5 {
+            font-size: 1rem;
+        }
+
+        h6 {
+            font-size: 0.875rem;
+        }
+
+        p {
+            margin-top:15px
+            font-size: 0.875rem;
+        }
+
+        .safety-hero {
+            flex-direction: column;
+        }
+
+        :root {
+            --card-width: 180px;
+        }
+
+        .feature-item,
+        .safety-item,
+        .platform-item,
+        .group-item {
+            padding: 0.6rem;
+        }
+    }
+</style>
+
+<main class="safety-page mt-2">
+    <div class="safety-container">
+        <h1>Safety</h1>
+
+        <!-- Hero Section -->
+        <section class="safety-hero">
+            <div class="safety-content">
+                <h2>Explore the Wild with Confidence</h2>
+                <p>At Aorbo Treks, the safety of our users is our top priority. We ensure a secure and structured
+                    trekking experience by partnering with Verified Organizers - you are in safe hands!</p>
+            </div>
+            <div class="safety-image">
+                <img src="{% static 'images/safe_1.webp' %}" alt="Safe Trekking Experience">
+            </div>
+        </section>
+
+        <!-- Safety Features -->
+        <section>
+            <h2 class="section-title">Safety Features</h2>
+            <div class="scrollable-row">
+                <div class="feature-item">
+                    <h3>Female-Friendly Treks</h3>
+                    <p class="card-text-full">Offering women-specific treks with experienced female guides who bring a
+                        supportive and inclusive atmosphere.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>24/7 Support</h3>
+                    <p class="card-text-full">We have a dedicated team that is available around the clock to assist with
+                        any emergencies or help you need.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Emergency Preparedness</h3>
+                    <p class="card-text-full">All treks are equipped with an emergency kit, have clear protocols in
+                        place, and medical support if needed.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Safety Drills</h3>
+                    <p class="card-text-full">Our trek guides are skilled in handling all types of situations and
+                        conduct regular training drills for all trek team members.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Individual Trekker -->
+        <section>
+            <h2 class="section-title">Individual Trekker..?</h2>
+            <div class="safety-card-image mb-3">
+                <img src="{% static 'images/Group 1000001380.webp' %}" alt="Individual Safety">
+            </div>
+            <div class="scrollable-row">
+                <div class="safety-item">
+                    <h3>Solo Experience</h3>
+                    <p class="card-text-full">An individual trekker often plans their trek independently, relying on
+                        their own research to find treks and organizers.</p>
+                </div>
+                <div class="safety-item">
+                    <h3>Limited Access</h3>
+                    <p class="card-text-full">They may not have access to a wide variety of trekking options or
+                        specialized services without extensive research.</p>
+                </div>
+                <div class="safety-item">
+                    <h3>Greater Uncertainty</h3>
+                    <p class="card-text-full">Solo trekkers may feel uncertain about the reliability of organizers and
+                        safety, as they're usually working with unverified sources.</p>
+                </div>
+                <div class="safety-item">
+                    <h3>Higher Costs</h3>
+                    <p class="card-text-full">Solo trekkers might face higher costs since they aren't benefiting from
+                        group discounts or tailored packages that offer better value.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Platform Safety -->
+        <section>
+            <h2 class="section-title">On Aorbo Treks Platform</h2>
+            <div class="platform-image mb-3">
+                <img src="{% static 'images/Group 1000001376.webp' %}" alt="Platform Safety">
+            </div>
+            <div class="scrollable-row">
+                <div class="platform-item">
+                    <h3>Access to Multiple Organizers</h3>
+                    <p class="card-text-full">Users can browse trusted trekking organizers on Aorbo, making it easy to
+                        compare options.</p>
+                </div>
+                <div class="platform-item">
+                    <h3>Tailored Trek Options</h3>
+                    <p class="card-text-full">Users can filter treks by preferences, ensuring a personalized experience.
+                    </p>
+                </div>
+                <div class="platform-item">
+                    <h3>Safety and Assurance</h3>
+                    <p class="card-text-full">Aorbo ensures partner organizers follow safety standards, providing
+                        reliable services for peace of mind.</p>
+                </div>
+                <div class="platform-item">
+                    <h3>Cost-Effective Packages</h3>
+                    <p class="card-text-full">Aorbo offers group discounts, special deals, and customizable packages to
+                        help users save.</p>
+                </div>
+                <div class="platform-item">
+                    <h3>24/7 Support</h3>
+                    <p class="card-text-full">Users have direct access to customer support, ensuring a secure and
+                        stress-free experience.</p>
+                </div>
+                <div class="platform-item">
+                    <h3>Streamlined Booking Process</h3>
+                    <p class="card-text-full">With Aorbo, users can easily book, pay, and manage their trips in one
+                        place.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Group Safety -->
+        <section>
+            <h2 class="section-title">At Aorbo Treks, we make group bookings easy, affordable, and hassle-free</h2>
+            <div class="group-image mb-3">
+                <img src="{% static 'images/Group 1000001383.webp' %}" style="height:210px" alt="Safe Group Payments">
+            </div>
+            <div class="scrollable-row">
+                <div class="group-item">
+                    <h3>Simple Booking</h3>
+                    <p class="card-text-full">Group leaders can book for the entire group online with customizable trek
+                        options.</p>
+                </div>
+                <div class="group-item">
+                    <h3>Exclusive Discounts</h3>
+                    <p class="card-text-full">Get special pricing and flexible payment options for groups.</p>
+                </div>
+                <div class="group-item">
+                    <h3>Dedicated Support</h3>
+                    <p class="card-text-full">Enjoy personalized assistance and 24/7 customer support for a smooth
+                        experience.</p>
+                </div>
+                <div class="group-item">
+                    <h3>Safety & Logistics</h3>
+                    <p class="card-text-full">We manage safety, transport, and accommodation for your group's comfort.
+                    </p>
+                </div>
+                <div class="group-item">
+                    <h3>Team Building</h3>
+                    <p class="card-text-full">Engage in activities that promote bonding and collaboration.</p>
+                </div>
+                <div class="group-item">
+                    <h3>Seamless Communication</h3>
+                    <p class="card-text-full">Keep everyone informed with clear details and updates.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+{% endblock %}

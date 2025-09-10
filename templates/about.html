@@ -1,0 +1,403 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Us - Aorbo Treks{% endblock %}
+
+{% block extra_css %}
+<style>
+    .about-container {
+        margin-bottom: 0px !important;
+        max-width: 1440px;
+        margin: 50px auto;
+        padding: 1.5rem 5%;
+        background: transparent;
+        /* background: linear-gradient(to bottom, rgba(252, 252, 252, 0.03), transparent); */
+    }
+
+    .mb-4 {
+        margin-bottom: -1.5rem !important;
+    }
+
+
+    .about-content {
+        gap: 3rem;
+        margin-bottom: 2rem;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 0.25rem;
+        background: linear-gradient(45deg, #2563eb, #3b82f6);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: flex;
+    }
+
+    .content-section {
+        margin-bottom: 0.5rem;
+        padding-top: 0;
+    }
+
+    .content-section h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+        margin-top: 0;
+        color: #333;
+    }
+
+    .content-section p {
+        color: #666;
+        line-height: 1.8;
+        font-size: 1rem;
+        position: relative;
+    }
+
+    .feature-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .feature-list li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+        color: #666;
+        padding: 0.5rem;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.6);
+    }
+
+    .feature-list li::before {
+        content: "";
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        background-color: #2563eb;
+        border-radius: 50%;
+        margin-right: 0.75rem;
+    }
+
+    .ready-explore {
+        background: linear-gradient(135deg, #2563eb, #3b82f6);
+        padding: 2rem;
+        border-radius: 16px;
+        text-align: center;
+        color: white;
+        margin-top: 2rem;
+        position: relative;
+    }
+
+    .ready-explore h2 {
+        color: white;
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .ready-explore p {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1rem;
+    }
+
+    .bottom-image-ready {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        margin-top: 1rem;
+    }
+
+    .about-left {
+        flex: 2;
+    }
+
+
+    .about-right {
+        flex: 1;
+        align-self: flex-start;
+    }
+
+    .image-stack {
+        position: relative;
+        width: 100%;
+        max-width: 250px;
+        height: auto;
+        margin-left: auto;
+        margin-right: 20px;
+    }
+
+    /* .bottom-image,
+    .top-image {
+        margin-top: -34px;
+        width: 110%;
+        margin-left: -117px;
+        height: auto;
+        object-fit: contain;
+        border-radius: 16px;
+        display: block;
+        position: relative;
+    } */
+
+    .mission-image {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .team-members-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .team-member {
+        flex: 1;
+        min-width: 250px;
+        max-width: 300px;
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .team-member:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .team-member-photo {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+    }
+
+    .team-member h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #2563eb;
+    }
+
+    .team-member-position {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: #666;
+        margin-bottom: 1rem;
+    }
+
+    .team-member-bio {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: #555;
+    }
+
+    @media (max-width: 768px) {
+        .about-content {
+            flex-direction: column;
+        }
+
+        .section-title {
+            font-size: 2rem;
+        }
+
+        .bottom-image-ready {
+            max-width: 200px;
+        }
+
+        .team-members-container {
+            justify-content: center;
+        }
+
+        .content-section p.truncated {
+            max-height: 80px;
+            overflow: hidden;
+        }
+
+        .content-section p.truncated::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3rem;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), white);
+        }
+
+        .view-toggle-btn {
+            display: inline-block;
+            /* margin-top: 0.5rem; */
+            font-size: 0.9rem;
+            color: #2563eb;
+            cursor: pointer;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .about-image {
+            display: none !important;
+        }
+    }
+
+    @media (min-width: 769px) {
+        .view-toggle-btn {
+            display: none;
+        }
+    }
+
+
+
+
+
+    .img-fluid {
+        max-width: 75%;
+        height: auto;
+        margin-top: -35px;
+        margin-left: 140px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<main class="about-container">
+
+    <div class="about-content">
+
+
+        <div class="about-left">
+            <div class="row align-items-start">
+                <!-- Left Column: Title + Who Are We -->
+                <div class="col-12 col-lg-7">
+                    <h1 class="section-title">About Us</h1>
+                    <section class="content-section mt-4">
+                        <h2>Who Are We?</h2>
+                        <p>
+                            Aorbo Treks isn't just a business; it's a passion-driven venture born out of muddy boots,
+                            endless trails, and an unshakable love for adventure. We recognized a pressing issue—
+                            trekking enthusiasts struggling to find reliable organizers and secure options. So, we
+                            decided to take matters into our own hands and create a platform that adventurers can trust.
+                        </p>
+                    </section>
+                </div>
+
+                <!-- Right Column: Image -->
+                <div class="col-12 col-lg-5 text-center mt-4 mt-lg-0 d-none d-lg-block">
+                    <img src="{% static 'images/Group 1000001393.webp' %}" alt="About Image" class="img-fluid rounded">
+                </div>
+
+            </div>
+
+
+            <div class="content-sections">
+
+                <section class="content-section">
+                    <h2>Our Backstory</h2>
+                    <p>Our journey began with one simple idea: to make trekking easy, safe, and fun for everyone. No
+                        more endless searching, no more second-guessing, and no more falling prey to scams. We've been
+                        in your shoes—lost, confused, and disappointed—and we know how it feels. That's why we built
+                        Aorbo Treks, ensuring that no one else has to go through the same challenges. Our platform is
+                        designed to be your trusted guide, making every step of your journey worth remembering.</p>
+                </section>
+                <br>
+                <section class="content-section">
+                    <h2>Our Goal</h2>
+                    <p>Our vision is clear—to become your ultimate go-to platform for treks and adventure trips. We
+                        connect passionate adventurers like you with certified, experienced organizers, ensuring a
+                        seamless and worry-free experience. Think of us as the Tinder of trekking - only better! With
+                        Aorbo Treks, you won't have to worry about getting ghosted. Instead, you'll find the perfect
+                        match for your adventure needs.</p>
+                </section>
+                <br>
+                <section class="content-section">
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <div>
+                            <h2>Our Mission</h2>
+                            <p>We are on a mission to spread the love of trekking and traveling to people from all walks
+                                of life. Whether you're an absolute beginner or a seasoned hiker, our goal is to make
+                                your trekking discoveries safe, unforgettable. We believe that trekking should be
+                                accessible to everyone, and we are here to make that happen.</p>
+                        </div>
+                        <img src="{% static 'images/mission.webp' %}" alt="mission-image" class="mission-image"
+                            style="max-width: 50%;">
+                    </div>
+                </section>
+                <br>
+                <section class="content-section">
+                    <h2>Our Dedication</h2>
+                    <p>At Aorbo Treks, trekking isn't just a job—it's our way of life. Our commitment goes beyond
+                        running a platform; we strive to build trust, ensure transparency, and craft experiences that
+                        leave you saying "That was the best decision ever!" Our team is composed of passionate trekkers
+                        who understand the ins and outs of adventure travel, always ready to go the extra mile to
+                        provide the best service.</p>
+                </section>
+                <br>
+                <section class="content-section">
+                    <h2>Our Agenda</h2>
+                    <p>Our goal is to transform trekking from a bucket-list activity into an integral part of your
+                        lifestyle. Because life's too short to stay indoors! We encourage you to step outside, connect
+                        with nature, meet like-minded adventurers, and create memories that last a lifetime. And while
+                        you focus on the thrill, we handle the logistics to ensure a hassle-free experience.</p>
+                </section>
+                <br>
+                <section class="content-section">
+                    <h2>Why Choose Aorbo Treks?</h2>
+                    <ul class="feature-list">
+                        <li>Trusted Organizers: We partner with experienced and verified trekking experts to ensure your
+                            safety and satisfaction.</li>
+                        <li>Transparency: No hidden costs, no unpleasant surprises—just honest and straightforward
+                            service.</li>
+                        <li>Community: Join a thriving community of trekkers and adventurers who share your passion for
+                            the outdoors.</li>
+                        <li>Tailored Experiences: Whether you're looking for a solo trek or a group adventure, we have
+                            options to suit every need.</li>
+                    </ul>
+                </section>
+                <br>
+                <section class="content-section">
+                    <h2>Ready to Explore?</h2>
+                    <p>Join us at Aorbo Treks and embark on a journey that's filled with excitement, adventure, and
+                        unforgettable experiences. Let's make trekking an adventure of a lifetime—one trail at a time!
+                    </p>
+                    <img src="{% static 'images/about_us botton.webp' %}" alt="Bottom Image" class="bottom-image-ready">
+                </section>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        function applyToggleLogic() {
+            const paragraphs = document.querySelectorAll('.content-section p');
+            paragraphs.forEach(function (para) {
+                const existingToggle = para.parentNode.querySelector('.view-toggle-btn');
+                if (window.innerWidth <= 768 && para.scrollHeight > 120 && !existingToggle) {
+                    para.classList.add('truncated');
+
+                    const toggle = document.createElement('span');
+                    toggle.classList.add('view-toggle-btn');
+                    toggle.textContent = 'View More';
+                    para.parentNode.appendChild(toggle);
+
+                    toggle.addEventListener('click', function () {
+                        para.classList.toggle('truncated');
+                        toggle.textContent = para.classList.contains('truncated') ? 'View More' : 'View Less';
+                    });
+                }
+            });
+        }
+
+        applyToggleLogic();
+
+        window.addEventListener('resize', () => {
+            document.querySelectorAll('.view-toggle-btn').forEach(el => el.remove());
+            document.querySelectorAll('.content-section p').forEach(p => p.classList.remove('truncated'));
+            applyToggleLogic();
+        });
+    });
+</script>
+{% endblock %}

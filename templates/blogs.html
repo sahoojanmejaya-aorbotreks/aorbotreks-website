@@ -1,0 +1,256 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Blogs - Aorbo Treks{% endblock %}
+
+{% block extra_css %}
+
+
+<style>
+    .blogs-container {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 5rem 4% 2rem;
+    }
+
+    .blogs-scroll {
+        display: flex;
+        overflow-x: auto;
+        gap: 1.5rem;
+        padding-bottom: 1.5rem;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        /* Firefox */
+        -ms-overflow-style: none;
+        /* IE/Edge */
+    }
+
+    .blogs-scroll::-webkit-scrollbar {
+        display: none;
+        /* Chrome/Safari */
+    }
+
+    .blog-card {
+        min-width: 280px;
+        max-width: 280px;
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+        border-radius: 14px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        background: transparent;
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.08);
+    }
+
+    .blog-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .blog-image {
+        width: 100%;
+        height: 160px;
+        overflow: hidden;
+    }
+
+    .blog-image img {
+        width: 100%;
+        height: 150%;
+        object-fit: cover;
+    }
+
+    .blog-content {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        background: white;
+        border-radius: 0 0 14px 14px;
+    }
+
+    .blog-meta {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.5rem;
+    }
+
+    .blog-logo {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        margin-right: 0.5rem;
+    }
+
+    .blog-date {
+        font-size: 0.7rem;
+        color: #666;
+    }
+
+    .blog-title {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 0.5rem;
+        line-height: 15px;
+    }
+
+    .blog-excerpt {
+        font-size: 15px !important;
+        color: #555;
+        line-height: 1.5;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        padding: 2rem 0;
+    }
+
+    .pagination ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .pagination li {
+        display: inline;
+    }
+
+    .pagination a,
+    .pagination span {
+        padding: 0.4rem 0.65rem;
+        border: 1px solid #dee2e6;
+        border-radius: 0.25rem;
+        text-decoration: none;
+        color: #0d6efd;
+        font-size: 0.9rem;
+    }
+
+    .pagination .active span {
+        background-color: #0d6efd;
+        color: white;
+        border-color: #0d6efd;
+    }
+
+    .no-blogs-message {
+        text-align: center;
+        padding: 3rem;
+        font-size: 1.1rem;
+        color: #555;
+    }
+
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 1.75rem;
+        }
+
+        /* ~28px */
+        h2 {
+            font-size: 1.5rem;
+        }
+
+        /* ~24px */
+        h3 {
+            font-size: 1.25rem;
+        }
+
+        /* ~20px */
+        h4 {
+            font-size: 1.125rem;
+        }
+
+        /* ~18px */
+        h5 {
+            font-size: 1rem;
+        }
+
+        /* ~16px */
+        h6 {
+            font-size: 0.875rem;
+        }
+
+        /* ~14px */
+        p {
+            font-size: 0.875rem;
+        }
+
+        /* ~14px */
+
+        .blog-excerpt {
+            display: none;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<main class="blogs-container">
+    <div class="text-center mb-4">
+        <h1 class="fw-bold">Blogs</h1>
+    </div>
+
+    {% if blogs %}
+    <div class="blogs-scroll">
+        {% for blog in blogs %}
+        <div class="blog-card">
+            <div class="blog-image">
+                <a href="{% url 'blog_detail' blog.slug %}">
+                    <img src="{{ blog.original_image_url }}" alt="{{ blog.title }}">
+                </a>
+            </div>
+            <div class="blog-content">
+                <div class="blog-meta">
+                    <img src="{% static 'images/R-logo.webp' %}" alt="Aorbo" class="blog-logo">
+                    <div class="blog-date">{{ blog.created_at|date:"F d, Y" }}</div>
+                </div>
+                <h2 class="blog-title">
+                    <a href="{% url 'blog_detail' blog.slug %}" style="text-decoration:none;color:inherit;">
+                        {{ blog.title }}
+                    </a>
+                </h2>
+                <p class="blog-excerpt">
+                    {% if blog.excerpt %}
+                    {{ blog.excerpt }}
+                    {% else %}
+                    {{ blog.content|truncatewords:30 }}
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="no-blogs-message">
+        <p>No blog posts available at the moment. Check back soon!</p>
+    </div>
+    {% endif %}
+
+    {% if blogs.has_other_pages %}
+    <div class="pagination">
+        <ul>
+            {% if blogs.has_previous %}
+            <li><a href="?page={{ blogs.previous_page_number }}">&laquo; Previous</a></li>
+            {% endif %}
+
+            {% for num in blogs.paginator.page_range %}
+            {% if blogs.number == num %}
+            <li class="active"><span>{{ num }}</span></li>
+            {% else %}
+            <li><a href="?page={{ num }}">{{ num }}</a></li>
+            {% endif %}
+            {% endfor %}
+
+            {% if blogs.has_next %}
+            <li><a href="?page={{ blogs.next_page_number }}">Next &raquo;</a></li>
+            {% endif %}
+        </ul>
+    </div>
+    {% endif %}
+</main>
+{% endblock %}

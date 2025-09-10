@@ -1,0 +1,782 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Aorbo Treks{% endblock %}
+
+{% block content %}
+<section class="hero-section py-5">
+    <div class="container-fluid px-1">
+        <div class="row align-items-center gx-5">
+            
+            <!-- Text Content -->
+            <div class="col-12 col-md-6 col-lg-7 text-center text-lg-start mb-4 mb-lg-0 order-1 order-lg-0">
+                <h1 class="hero-title">
+                    <span class="gradient-text">Aorbo Treks</span>
+                </h1>
+                <!-- Image (mobile only, right after heading) -->
+                <div class="d-lg-none my-3">
+                    <img src="{% static 'images/Aorbo.webp' %}" alt="Trekking" class="img-fluid hero-img">
+                </div>
+                <p class="hero-description">
+                    <strong>Weekend plans shouldn’t come with creeps or chaos</strong>. We make epic escapes dead
+                    simple: vetted trek leaders, chill groups, and no shady surprises.
+                    Just book, show up, and vibe. <strong>Your adventure, without the mess.</strong>
+                </p>
+                <p class="tagline">Because with Aorbo Treks, every trek is more than a journey—it's a story worth
+                    sharing.</p>
+                <div class="d-flex flex-sm-row justify-content-lg-start gap-3">
+                    <a href="#" class="download-btn android">
+                        <img src="{% static 'images/Android OS.webp' %}" alt="Android Icon" class="platform-icon">
+                        <div class="btn-text"><span>Coming Soon..</span></div>
+                    </a>
+                    <a href="#" class="download-btn ios">
+                        <img src="{% static 'images/Apple Logo.webp' %}" alt="Apple Icon" class="platform-icon">
+                        <div class="btn-text"><span>Coming Soon..</span></div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Image (desktop only, original position) -->
+            <div class="col-12 col-md-6 col-lg-5 text-center d-none d-lg-block order-0 order-lg-1">
+                <img src="{% static 'images/Aorbo.webp' %}" alt="Trekking" class="img-fluid hero-img mt-3 mt-lg-0">
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="connecting-section py-1 bg-white">
+    <div class="container-fluid py-1">
+        <div class="row align-items-center gx-5 gy-5">
+
+            <!-- Heading (mobile first, desktop hidden here) -->
+            <div class="col-12 text-center d-lg-none order-0 mb-3">
+                <h2 class="fw-bold exp mt-0 mb-0">
+                    Connecting Adventurers with Local Expertise
+                </h2>
+            </div>
+
+            <!-- Images Column -->
+            <div class="col-12 col-md-6 col-lg-7 conn d-flex justify-content-center position-relative flex-wrap order-1 order-lg-0">
+                <div class="image-wrapper">
+                    <img src="{% static 'images/conn.webp' %}" alt="Adventurers" class="img-fluid conn-image">
+                    <img src="{% static 'images/connecting.webp' %}" alt="Local Expertise" class="img-fluid connecting-image">
+                </div>
+            </div>
+
+            <!-- Text Column -->
+            <div class="col-12 col-md-6 col-lg-5 text-center text-lg-start order-2 order-lg-1">
+                <!-- Desktop Heading (hidden on mobile) -->
+                <h2 class="fw-bold exp mt-0 mb-0 d-none d-lg-block">
+                    Connecting Adventurers with Local Expertise
+                </h2>
+                <p class="lead mb-0">
+                    Aorbo Treks is dedicated to bridging the gap between trekkers and local vendors,
+                    ensuring that every adventure is tailored and authentic.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="features  py-5 text-center align-items-lg-center">
+    <div class="container">
+        <h2 class="mb-5 fw-bold">How We Help You Organize Your Trekking Experience</h2>
+
+        <!-- Horizontal scroll container -->
+        <div class="scroll-wrapper how mt-4">
+            <div class="feature-card p-4">
+                <div class="feature-icon mb-3">
+                    <img src="{% static 'images/tailor.webp' %}" alt="Tailored Experience">
+                </div>
+                <h3>Tailored Experience</h3>
+                <p>Customize your trek according to your preferences</p>
+            </div>
+
+            <div class="feature-card p-4">
+                <div class="feature-icon mb-3">
+                    <img src="{% static 'images/sustainable.webp' %}" alt="Sustainable Tourism">
+                </div>
+                <h3>Sustainable Tourism</h3>
+                <p>Supporting local communities while preserving nature</p>
+            </div>
+
+            <div class="feature-card p-4">
+                <div class="feature-icon mb-3">
+                    <img src="{% static 'images/vendor.webp' %}" alt="Verified Vendors">
+                </div>
+                <h3>Verified Vendors</h3>
+                <p>All our trek organizers are thoroughly vetted</p>
+            </div>
+
+            <div class="feature-card p-4">
+                <div class="feature-icon mb-3">
+                    <img src="{% static 'images/support.webp' %}" alt="24/7 Support">
+                </div>
+                <h3>24/7 Support</h3>
+                <p>Round-the-clock assistance for all your needs</p>
+            </div>
+            <!-- </div>
+
+        <button class="explore-btn btn btn-primary mt-4">Explore Insights</button>
+    </div> -->
+</section>
+
+
+
+
+
+<section class="whats-new py-5 text-center">
+    <div class="container-fluid mar">
+        <h2 class="fw-bold mb-5 position-relative d-inline-block">What's New</h2>
+
+        <!-- Scrollable wrapper for cards -->
+        <div class="scroll-wrapper">
+            {% if whats_new %}
+            {% for item in whats_new %}
+            <div class="carousel-slide">
+                <img src="{{ item.image_url }}" loading="lazy" alt="news image">
+                <div class="slide-content">
+                    <h3>{{ item.title }}</h3>
+                    <p>{{ item.content }}</p>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <!-- Fallback static cards -->
+            <div class="carousel-slide">
+                <div class="new">
+                    <img src="{% static 'images/women.webp' %}" loading="lazy" alt="Boundless Adventure">
+                </div>
+
+                <div class="slide-content">
+                    <h3>Boundless Adventure</h3>
+                    <p>Explore confidently with Aorbo Treks, where your safety is our priority.</p>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <div class="new"><img src="{% static 'images/Young woman hiking and relaxing on a peak.svg' %}"
+                        loading="lazy" alt="Variety of Treks"></div>
+
+                <div class="slide-content">
+                    <h3>Variety of Treks</h3>
+                    <p>From serene trails to thrilling climbs, find treks that match your vibes!</p>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <div class="new"> <img src="{% static 'images/Coworkers dancing and having fun in the office.webp' %}"
+                        loading="lazy" alt="Countless Organizers"></div>
+                <div class="slide-content">
+                    <h3>Countless Organizers</h3>
+                    <p>Choose from an extended network of trusted trek organizers, all in one place!</p>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <div class="new">
+                    <img src="{% static 'images/Woman receiving a spam letter.webp' %}" loading="lazy"
+                        alt="Free Cancellation">
+
+                </div>
+                <div class="slide-content">
+                    <h3>Free Cancellation</h3>
+                    <p>Add free cancellation and cancel for free up to 24 hours before departure.</p>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <div class="new">
+                    <img src="{% static 'images/Boy shaking hands with someone to the left(1.webp' %}" loading="lazy"
+                        alt="Refer and Earn">
+
+                </div>
+                <div class="slide-content">
+                    <h3>Refer and Earn</h3>
+                    <p>Invite your friends and earn rewards for their first booking!</p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<!-- Top Treks Section -->
+
+<section class="top-treks py-5 text-center">
+    <div class="container-fluid">
+        <h2 class="fw-bold mb-5 position-relative d-inline-block">Top Treks</h2>
+
+        <!-- Scrollable Cards Wrapper -->
+        <div class="scroll-wrapper d-flex gap-3 overflow-auto pb-3">
+            {% if top_treks %}
+            {% for trek in top_treks %}
+            <div class="card flex-shrink-0" style="width: 260px;">
+                <img src="{{ trek.image_url }}" loading="lazy" class="card-img-top" alt="{{ trek.name }}">
+                <div class="card-body">
+                    <h3 class="card-title">{{ trek.name }}</h3>
+                    <p class="card-subtitle text-muted mb-2">{{ trek.location }}</p>
+                    <p class="card-text">{{ trek.description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <!-- Static fallback cards -->
+            <div class="card flex-shrink-0" style="width: 260px;">
+                <img src="{% static 'images/goa.webp' %}" loading="lazy" class="card-img-top" alt="Goa Beach">
+                <div class="card-body">
+                    <h3 class="card-title">Goa</h3>
+                    <p class="card-text">Dive into Goa's beaches, nightlife and culture, where every moment feels like a
+                        <span class="highlight">CELEBRATION</span>.
+                    </p>
+                </div>
+            </div>
+            <div class="card flex-shrink-0" style="width: 260px;">
+                <img src="{% static 'images/gokarna.webp' %}" loading="lazy" class="card-img-top" alt="Gokarna Sunset">
+                <div class="card-body">
+                    <h3 class="card-title">Gokarna</h3>
+                    <p class="card-text">Escape to Gokarna's serene beaches and spiritual charm. A perfect blend of
+                        peace and
+                        <span class="highlight">ADVENTURE!</span>
+                    </p>
+                </div>
+            </div>
+            <div class="card flex-shrink-0" style="width: 260px;">
+                <img src="{% static 'images/coorg.webp' %}" loading="lazy" class="card-img-top" alt="Coorg Hills">
+                <div class="card-body">
+                    <h3 class="card-title">Coorg</h3>
+                    <p class="card-text">The <span class="highlight">SCOTLAND</span> of India, offers misty hills, lush
+                        coffee plantations & serene waterfalls</p>
+                </div>
+            </div>
+            <div class="card flex-shrink-0" style="width: 260px;">
+                <img src="{% static 'images/udipi.webp' %}" loading="lazy" class="card-img-top" alt="Udipi">
+                <div class="card-body">
+                    <h3 class="card-title">Udupi</h3>
+                    <p class="card-text">A coastal gem with pristine beaches, ancient temples,and world-class
+                        cuisine.Enjoy culture, serenity and <span class="highlight">SUNSETS!</span></p>
+                </div>
+            </div>
+            <div class="card flex-shrink-0" style="width: 260px;">
+                <img src="{% static 'images/munnar.webp' %}" loading="lazy" class="card-img-top" alt="Munnar">
+                <div class="card-body">
+                    <h3 class="card-title">Munnar</h3>
+                    <p class="card-text">The Crown Jewel of Kerala, Captivates with its emerald tea gardens and tranquil
+                        waterfalls. A paradise for Nature <span class="highlight">LOVERS !</span></p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<section class="testimonials py-5">
+    <div class="container-fluid ">
+        <div class="testimonials-header text-center mb-5 position-relative">
+            <div class="testimonials-images position-relative">
+                <img src="{% static 'images/Traveler reading a book.webp' %}" loading="lazy" alt="Sitting Trekker"
+                    class="trekker-left position-absolute">
+                <img src="{% static 'images/young man pointing at rating window.webp' %}" loading="lazy"
+                    alt="Jumping Trekker" class="trekker-right position-absolute">
+            </div>
+            <h2 class="fw-bold">Hear From Our Trekkers</h2>
+            <p class="text-muted">Join our unforgettable treks and hear from those who've journeyed with Aorbo Treks</p>
+        </div>
+
+        <div class="carousel-container">
+            <div class="carousel d-flex flex-nowrap overflow-auto gap-3 pb-4 px-2">
+                {% if featured_testimonials %}
+                {% for testimonial in featured_testimonials %}
+                <div class="carousel-slide p-4 bg-white rounded-4 shadow-sm flex-shrink-0" style="min-width: 280px;">
+                    <div class="testimonial-header d-flex align-items-center gap-3 mb-3">
+                        <div
+                            class="testimonial-profile d-flex justify-content-center align-items-center rounded-circle text-white fw-bold">
+                            {% if testimonial.photo %}
+                            <img src="{{ testimonial.photo.url }}" alt="{{ testimonial.name }}"
+                                onerror="this.src='{% static 'images/default-profile.jpg' %}'; this.onerror=null;">
+                            {% else %}
+                            {% with testimonial.name.split as name_parts %}
+                            {% if name_parts|length > 1 %}
+                            <span class="initials">{{ name_parts.0|slice:":1" }} {{ name_parts.1|slice:":1" }}</span>
+                            {% else %}
+                            <span class="initials">{{ name_parts.0|slice:":1" }}</span>
+                            {% endif %}
+                            {% endwith %}
+                            {% endif %}
+                        </div>
+                        <div class="testimonial-info">
+                            <h3 class="mb-1">{{ testimonial.name }}</h3>
+                            <div class="testimonial-stars">
+                                {% for i in "12345"|make_list %}
+                                {% if forloop.counter <= testimonial.rating %} ★ {% else %} ☆ {% endif %} {% endfor %}
+                                    </div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text mb-2">"{{ testimonial.comment }}"</p>
+                        {% if testimonial.trek %}
+                        <p class="testimonial-trek mb-0">Trek:
+                            <a href="{% url 'trek_detail' testimonial.trek.slug %}" class="text-decoration-none">
+                                {{ testimonial.trek.name }}
+                            </a>
+                        </p>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <!-- Fallback testimonials -->
+                    <div class="carousel-slide p-4 bg-white rounded-4 shadow-sm flex-shrink-0"
+                        style="min-width: 280px;">
+                        <div class="testimonial-header d-flex align-items-center gap-3 mb-3">
+                            <div
+                                class="testimonial-profile d-flex justify-content-center align-items-center rounded-circle text-white fw-bold">
+                                <span class="initials">
+                                    <h3>R K</h3>
+                                </span>
+                            </div>
+                            <div class="testimonial-info">
+                                <h3 class="mb-1">Ravi Kishore</h3>
+                                <div class="testimonial-stars">★★★★★</div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text mb-2">Provides detailed and up-to-date trail maps and difficulty
+                            levels.</p>
+                    </div>
+
+                    <div class="carousel-slide p-4 bg-white rounded-4 shadow-sm flex-shrink-0"
+                        style="min-width: 280px;">
+                        <div class="testimonial-header d-flex align-items-center gap-3 mb-3">
+                            <div
+                                class="testimonial-profile d-flex justify-content-center align-items-center rounded-circle text-white fw-bold">
+                                <span class="initials">
+                                    <h3>N K</h3>
+                                </span>
+                            </div>
+                            <div class="testimonial-info">
+                                <h3 class="mb-1">Naveen Kumar</h3>
+                                <div class="testimonial-stars">★★★★★</div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text mb-2">Provides detailed and up-to-date trail maps and difficulty
+                            levels.</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+</section>
+
+<!-- Styling -->
+<style>
+    .testimonial-profile {
+        width: 50px;
+        height: 50px;
+        background-color: #f3f5f8;
+        border-radius: 50%;
+        overflow: hidden;
+        font-size: 18px;
+        text-transform: uppercase;
+        text-align: center;
+        position: relative;
+    }
+
+    .testimonial-profile img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-radius: 50%;
+    }
+
+    .testimonial-profile h3 {
+        color: #4A97FF;
+        font-family: 'Poppins';
+        font-size: 20px !important;
+        font-weight: 600;
+        margin: 0px !important;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .testimonial-profile .initials {
+        font-family: 'Poppins', sans-serif;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .carousel {
+        scroll-behavior: smooth;
+    }
+
+    .carousel-slide {
+        transition: transform 0.3s ease;
+    }
+
+    .carousel-slide:hover {
+        transform: translateY(-5px);
+    }
+</style>
+
+
+
+<!-- Featured Blog Posts Section -->
+
+<section class="faq">
+    <h2>Trek Reservation FAQs</h2>
+    <div class="faq-tabs">
+        <!-- Category Buttons -->
+        <div class="tab-buttons">
+            {% if faq_categories %}
+            {% for category, faqs in faq_categories.items %}
+            <button class="tab-btn {% if forloop.first %}active{% endif %}" data-tab="{{ category|slugify }}">
+                {{ category }}
+            </button>
+            {% endfor %}
+            {% else %}
+            <button class="tab-btn active" data-tab="trek">Trek-Related</button>
+            <button class="tab-btn" data-tab="bookings">Bookings-Related</button>
+            <button class="tab-btn" data-tab="cancellation">Cancellation & Refund</button>
+            <button class="tab-btn" data-tab="payment">Payment-Related</button>
+            <button class="tab-btn" data-tab="support">Customer-Support</button>
+            {% endif %}
+        </div>
+
+        <!-- FAQ Content -->
+        {% if faq_categories %}
+        {% for category, faqs in faq_categories.items %}
+        <div class="faq-content {% if forloop.first %}active{% endif %}" id="{{ category|slugify }}-content">
+            {% for faq in faqs %}
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>{{ faq.question }}</span>
+                    <svg class="arrow-icon" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" fill="none" />
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>{{ faq.answer }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+        {% else %}
+        <!-- Static Trek Related FAQs -->
+        <div class="faq-content active" id="trek-content">
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>Do I need prior trekking experience for this trek?</span>
+                    <svg class="arrow-icon" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" fill="none" />
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Not necessarily! We list treks based on difficulty, and many treks are beginner-friendly.
+                        Check the trek details in our app before booking.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>What should I pack for the trek?</span>
+                    <svg class="arrow-icon" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" fill="none" />
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>It depends on the trek, but essentials include good trekking shoes, a backpack, water,
+                        snacks, and weather-appropriate clothing. Detailed packing lists are provided in the trek
+                        description.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Static Bookings Related FAQs -->
+        <div class="faq-content" id="bookings-content">
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>How do I book a trek?</span>
+                    <svg class="arrow-icon" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" fill="none" />
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Simply open the Aorbo/Trek app, choose your trek, select your dates, and complete your
+                        payment.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Static Cancellation Related FAQs -->
+        <div class="faq-content" id="cancellation-content">
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>What is your cancellation policy?</span>
+                    <svg class="arrow-icon" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" fill="none" />
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>We allow cancellations up to 7 days before the trek date. Partial refunds are applicable.
+                        Check the trek page for specific terms.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Static Payment Related FAQs -->
+        <div class="faq-content" id="payment-content">
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>What payment methods do you accept?</span>
+                    <svg class="arrow-icon" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" fill="none" />
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>We accept all major credit/debit cards, UPI, net banking, and digital wallets. Payments are
+                        encrypted for security.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Static Customer Support FAQs -->
+        <div class="faq-content" id="support-content">
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>How can I contact customer support?</span>
+                    <svg class="arrow-icon" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" fill="none" />
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>You can contact us via the support section in the Aorbo app or by emailing support@aorbo.in.
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Featured Blog Posts Styles */
+    .featured-blogs {
+        padding: 4rem 5%;
+        background-color: #f8f9fa;
+    }
+
+    .featured-blogs h2 {
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+        color: #333;
+    }
+
+    .blogs-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: center;
+    }
+
+    .blog-card {
+        flex: 1;
+        min-width: 300px;
+        max-width: 350px;
+        background-color: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .blog-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .blog-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .blog-content {
+        padding: 1.5rem;
+    }
+
+    .blog-content h3 {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+        color: #333;
+    }
+
+    .blog-date {
+        font-size: 0.85rem;
+        color: #666;
+        margin-bottom: 1rem;
+    }
+
+    .blog-excerpt {
+        font-size: 0.9rem;
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+
+    .read-more {
+        display: inline-block;
+        color: #2563eb;
+        font-weight: 500;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.3s ease;
+    }
+
+    .read-more:hover {
+        color: #1e40af;
+    }
+
+    .view-all-blogs {
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    .view-all-btn {
+        display: inline-block;
+        background-color: #2563eb;
+        color: #fff;
+        padding: 0.75rem 1.5rem;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: background-color 0.3s ease;
+    }
+
+    .view-all-btn:hover {
+        background-color: #1e40af;
+    }
+
+    @media (max-width: 768px) {
+        .blogs-container {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .blog-card {
+            max-width: 100%;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // FAQ Tab Switching
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const faqContents = document.querySelectorAll('.faq-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                faqContents.forEach(content => content.classList.remove('active'));
+
+                // Add active class to clicked button and corresponding content
+                button.classList.add('active');
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(`${tabId}-content`).classList.add('active');
+            });
+        });
+
+        // FAQ Accordion
+        const faqQuestions = document.querySelectorAll('.faq-question');
+
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isExpanded = question.getAttribute('aria-expanded') === 'true';
+
+                // Toggle aria-expanded
+                question.setAttribute('aria-expanded', !isExpanded);
+
+                // Toggle answer visibility
+                if (isExpanded) {
+                    answer.style.maxHeight = null;
+                } else {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                }
+            });
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        // Function to initialize carousel for a given container
+        function initializeCarousel(carouselContainer) {
+            const track = carouselContainer.querySelector('.carousel-track');
+            const slides = Array.from(track.querySelectorAll('.carousel-slide'));
+            const prevButton = carouselContainer.querySelector('.left-arrow');
+            const nextButton = carouselContainer.querySelector('.right-arrow');
+
+            let currentIndex = 0;
+            const slideWidth = slides[0].offsetWidth + 25; // Including gap
+
+            // Function to update carousel position and button states
+            function updateCarousel() {
+                const offset = -currentIndex * slideWidth;
+                track.style.transform = `translateX(${offset}px)`;
+                track.style.transition = 'transform 0.3s ease';
+
+                // Update button states
+                prevButton.disabled = currentIndex === 0;
+                nextButton.disabled = currentIndex >= slides.length - 3; // Show 3 slides at a time
+            }
+
+            // Next button click handler
+            nextButton.addEventListener('click', () => {
+                if (currentIndex < slides.length - 3) {
+                    currentIndex++;
+                    updateCarousel();
+                }
+            });
+
+            // Previous button click handler
+            prevButton.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateCarousel();
+                }
+            });
+
+            // Initial setup
+            updateCarousel();
+
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                const newSlideWidth = slides[0].offsetWidth + 25;
+                if (newSlideWidth !== slideWidth) {
+                    updateCarousel();
+                }
+            });
+        }
+
+        // Initialize all carousels
+        const carousels = document.querySelectorAll('.carousel-container');
+        carousels.forEach(carousel => {
+            initializeCarousel(carousel);
+        });
+    });
+</script>
+{% endblock %}
