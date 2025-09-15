@@ -19,12 +19,23 @@
   <meta property="og:title" content="Aorbo Treks – Explore India’s Best Trekking Spots">
   <meta property="og:description"
     content="Discover trekking adventures with Aorbo Treks. Safe. Sustainable. Unforgettable.">
-  <meta property="og:image" content="/assets/images/hero-sec.webp">
+  <meta property="og:image" content="https://aorbotreks.com/static/images/logo.png">
+  <meta property="og:image:alt" content="Aorbo Treks Logo">
+
   <meta property="og:url" content="https://aorbotreks.com/current-page-url">
   <meta property="og:type" content="website">
 
   <meta http-equiv="Content-Security-Policy"
     content="img-src 'self' data: https://aorbotreks.com https://www.aorbotreks.com https://xsconhhzyaiowokwsqne.supabase.co;">
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "url": "https://aorbotreks.com",
+      "logo": "https://aorbotreks.com/static/images/logo.png"
+    }
+  </script>
 
   <title>{% block title %}Aorbo Treks{% endblock %}</title>
   {% load static %}
@@ -49,14 +60,13 @@
 
   <!-- Custom JS -->
   <script src="{% static 'js/main.js' %}" defer></script>
-
+  <script src="{% static 'js/white.js' %}" defer></script>
 
   {% block extra_css %}{% endblock %}
 </head>
 
 <body>
-  <!-- Navbar -->
-
+  <div id="page-transition"></div>
   <!-- ... your navbar code ... -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
